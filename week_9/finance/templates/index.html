@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>User_ID</th>
+                <th>Stock_Symbol</th>
+                <th>Stock_Name</th>
+                <th>shares</th>
+                <th>Current_Price</th>
+                <th>Total_Value</th>
+                <th>Cash</th>
+                <th>Grand_Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in table %}
+                <tr>
+                    <td>{{ user_id }}</td>
+                    <td>{{ row["symbol"] }}</td>
+                    <td>{{ row["name"] }}</td>
+                    <td>{{ row["shares"] }}</td>
+                    <td>{{ row["current_price"] | usd }}</td>
+                    <td>{{ row["total_value"] | usd }}</td>
+                    <td>{{ cash | usd }}</td>
+                    <td>{{ row["grand_value"] | usd }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
